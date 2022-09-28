@@ -1,0 +1,69 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+
+            <div *ngIf="panierItems.length > 0">
+            <table class="table table-bordered">
+                <tr>
+                    <th width="20%">Image</th>
+                    <th width="50%">Détail produit</th>
+                    <th width="30%"></th>
+                </tr>
+
+                <tr *ngFor="let tempPanierItem of panierItems">
+                    <td>
+                        <img src="{{tempPanierItem.image}}" class="img-responsive" width="150px"/>
+                    </td>
+                    <td>
+                        <p>{{tempPanierItem.nomProduit}}</p>
+                        <p>{{tempPanierItem.prix | currency : 'EUR'}}</p>
+                    </td>
+                    <td>
+                        <label>Quantité : </label> 
+                        <div class="items">
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <button (click)="decrementQuantite(tempPanierItem)"class="btn btn-dark btn-sm">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                                
+
+                                <div class="col ml-4 mr-2">
+                                    {{tempPanierItem.quantite}}
+                                </div>
+
+                                <div class="col">
+                                    <button (click)="incrementQuantite(tempPanierItem)" class="btn btn-dark btn-sm">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+
+                                <div class="col-8"></div>
+                            </div>
+                        </div>
+
+                        <button (click)="remove(tempPanierItem)" class="btn btn-warning">Supprimer</button>
+
+                        <p class="mt-2">Sous-total : {{tempPanierItem.quantite * tempPanierItem.prix | currency: 'EUR'}}</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2"></td>
+                    <td style="font-weight: bold">
+                        <p>Quantité totale : {{totalQuantite}}</p>
+                        <p>Frais de livraison : GRATUIT</p>
+                        <p>Prix total : {{totalPrix | currency: 'EUR' }}</p>
+                        <button routerLink="/paiement" class="btn btn-success" style="color:black">Commander</button>
+                    </td>
+                </tr>
+                </table>
+            </div>
+            <div *ngIf="panierItems.length == 0" class="alert alert-warning col-md-12" role="alert" style="text-align: center">
+                Votre panier est vide.
+            </div>
+        </div>
+    </div>
+</div>
+

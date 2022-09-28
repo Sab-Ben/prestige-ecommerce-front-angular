@@ -1,0 +1,148 @@
+<body>
+	<div class="page-wrapper">
+
+	<!-- MENU SIDEBAR-->
+	<nav class="navbar fixed-top navbar-expand-lg navbar">
+		<div class="container">
+			<div class="navResponsive col-md-3 d-flex justify-content-center">
+		
+				<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link text-white" routerLink="/marque" routerLinkActive="active-link">La marque</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link text-white" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+					Les montres
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<li><a class="dropdown-item" routerLink="/categorie/2" routerLinkActive="active-link">Montres Homme</a></li>
+					<li><a class="dropdown-item" routerLink="/categorie/1" routerLinkActive="active-link">Montres Femme</a></li>
+					</ul>
+				</li>
+				</ul>
+		
+			</div>
+		
+			<div class="collapse navbar-collapse d-flex justify-content-center col-md-6" id="navbarNav">
+				<ul class="navbar-nav">
+				<a class="navbar-brand" routerLink="/accueil" routerLinkActive="active-link"><img class="navLogo"
+					src="assets/logo/prestige_blanc.png" alt="Logo"></a>
+				</ul>
+			</div>
+		
+		
+			<div class="col-md-2 d-flex justify-content-center align-items-center">
+		
+				<div class="dropdown">
+					<a type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+						<i class="fas fa-user text-white"></i>
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+						<li><a class="dropdown-item" routerLink="/inscription" routerLinkActive="active-link">Inscription</a></li>
+						<li><a class="dropdown-item" routerLink="/connexion" routerLinkActive="active-link">Connexion</a></li>
+						<!--<li><a class="dropdown-item" href="#">Administrateur</a></li>
+						<li><a class="dropdown-item" href="#">Mon compte</a></li>
+						<li><a class="dropdown-item" href="#">Deconnexion</a></li>-->
+					</ul>
+				</div>
+
+				<app-panier-statuts></app-panier-statuts>
+				
+				<a type="button" routerLink="/panier-details"><i class="ms-2 fas fa-shopping-cart text-white"></i></a>
+				<span class="badge" style="color : white"></span>
+			</div>
+		</div>
+	</nav>
+		
+<!-- END MENU NAVBAR-->
+
+		<!-- PAGE CONTAINER-->
+		<div class="page-container">
+
+    <!-- MAIN CONTENT-->
+	<router-outlet></router-outlet>
+
+
+
+    </div>
+</div>
+
+<!-- END PAGE CONTAINER-->
+	<footer class="bg-light text-center mt-5">
+		<div class="container p-4">
+		<section class="">
+			<div class="row">
+			<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+				<h5 class="text-uppercase"><img src="assets/icones/boite-en-carton.png"></h5>
+				<ul class="list-unstyled mb-0">
+				<li>
+					<a href="#" class="text-decoration-none text-reset">Livraison offerte</a>
+				</li>
+				</ul>
+			</div>
+	
+			<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+				<h5 class="text-uppercase"><img src="assets/icones/switzerland.png"></h5>
+				<ul class="list-unstyled mb-0">
+				<li>
+					<a href="#" class="text-decoration-none text-reset">Swiss Made</a>
+				</li>
+				</ul>
+			</div>
+	
+			<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+				<h5 class="text-uppercase"><img src="assets/icones/montre-intelligente.png"></h5>
+	
+				<ul class="list-unstyled mb-0">
+				<li>
+					<a href="#" class="text-decoration-none text-reset">Garantie PRESTIGE</a>
+				</li>
+				</ul>
+			</div>
+	
+			<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+				<h5 class="text-uppercase"><img src="assets/icones/paiement-securise.png"></h5>
+				<ul class="list-unstyled mb-0">
+				<li>
+					<a href="#" class="text-decoration-none text-reset">Paiement sécurisé</a>
+				</li>
+				</ul>
+			</div>
+
+			</div> 
+		</section>
+		</div> 
+	
+		<section class="mb-4">
+		<a class="btn btn-outline-dark btn-floating m-1" href="https://fr-fr.facebook.com/" role="button">
+			<i class=" fab fa-facebook-f"></i>
+		</a>
+	
+		<a class="btn btn-outline-dark btn-floating m-1" href="https://twitter.com/?lang=fr" role="button">
+			<i class="fab fa-twitter"></i>
+		</a>
+	
+		<a class="btn btn-outline-dark btn-floating m-1" href="https://www.google.fr/" role="button">
+			<i class="fab fa-google"></i>
+		</a>
+	
+		<a class="btn btn-outline-dark btn-floating m-1" href="https://www.instagram.com/?hl=fr" role="button">
+			<i class="fab fa-instagram"></i>
+		</a>
+	
+		<a class="btn btn-outline-dark btn-floating m-1" href="https://fr.linkedin.com/" role="button">
+			<i class="fab fa-linkedin-in"></i>
+		</a>
+	
+		<a class="btn btn-outline-dark btn-floating m-1" href="https://github.com/" role="button">
+			<i class="fab fa-github"></i>
+		</a>
+	
+		</section>
+	
+		<div class="text-center p-3 text-white" style="background-color: black;">
+		All right reserved © :
+		<a class="text-reset" routerLink="/accueil" routerLinkActive="active-link">Prestige</a>
+		</div>
+	
+	</footer>
+</body>

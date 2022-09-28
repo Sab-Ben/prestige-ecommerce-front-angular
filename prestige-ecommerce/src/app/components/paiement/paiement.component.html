@@ -1,0 +1,268 @@
+<div class="main-content page-m">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+
+            <form [formGroup]="paiementFormGroup" (ngSubmit)="onSubmit()">
+
+                <!-- Client -->
+                <div formGroupName="client" class="form-area">
+                    <h3>Client</h3>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Prénom</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="prenom" type="text">
+                                <div *ngIf="prenom!.invalid && (prenom!.dirty || prenom!.touched)" class="alert alert-danger mt-1">
+                                    <div *ngIf="prenom!.errors?.['required'] || prenom!.errors?.['notOnlyWhitespace']">
+                                    Le prénom est obligatoire.
+                                    </div>
+
+                                    <div *ngIf="prenom!.errors?.['minlength']">
+                                    Le prénom doit comporter au moins 2 caractères.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Nom</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="nom" type="text">
+                                <div *ngIf="nom!.invalid && (nom!.dirty || nom!.touched)" class="alert alert-danger mt-1">
+                                    <div *ngIf="nom!.errors?.['required'] || nom!.errors?.['notOnlyWhitespace']">
+                                    Le nom est obligatoire.
+                                    </div>
+
+                                    <div *ngIf="prenom!.errors?.['minlength']">
+                                    Le nom doit comporter au moins 2 caractères.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Email</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="email" type="text">
+                                <div *ngIf="email!.invalid && (email!.dirty || email!.touched)" class="alert alert-danger mt-1">
+                                    <div *ngIf="email!.errors?.['required'] || email!.errors?.['notOnlyWhitespace']">
+                                    L'email est obligatoire.
+                                    </div>
+
+                                    <div *ngIf="email!.errors?.['pattern']">
+                                    L'email doit être une adresse valide.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Téléphone</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="telephone" type="text">
+                                <div *ngIf="telephone!.invalid && (telephone!.dirty || telephone!.touched)" class="alert alert-danger mt-1">
+                                    <div *ngIf="telephone!.errors?.['required'] || telephone!.errors?.['notOnlyWhitespace']">
+                                    Le téléphone est obligatoire.
+                                    </div>
+
+                                    <div *ngIf="telephone!.errors?.['pattern']">
+                                    Le téléphone doit avoir 10 chiffres.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Addresse de livraison -->
+                <div formGroupName="adresseLivraison" class="form-area">
+                    <h3>Adresse de livraison</h3>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Adresse</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="adresse" type="text">
+                                <div *ngIf="adresse!.invalid && (adresse!.dirty || email!.touched)" class="alert alert-danger mt-1">
+                                    <div *ngIf="adresse!.errors?.['required'] || adresse!.errors?.['notOnlyWhitespace']">
+                                    Le nom de l'adresse et le numéro sont obligatoires.
+                                    </div>
+
+                                    <div *ngIf="adresse!.errors?.['minlength']">
+                                    Le champs adresse doit avoir un minimum de 15 caractères.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Code Postale</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="codePostale" type="text">
+                                <div *ngIf="codePostale!.invalid && (codePostale!.dirty || codePostale!.touched)" class="alert alert-danger mt-1">
+                                    <div *ngIf="codePostale!.errors?.['required'] || codePostale!.errors?.['notOnlyWhitespace']">
+                                    Le code postale est obligatoire.
+                                    </div>
+
+                                    <div *ngIf="codePostale!.errors?.['minlength']">
+                                    Le code postale doit comporter 5 chiffres.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Ville</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="ville" type="text">
+                                <div *ngIf="ville!.invalid && (email!.dirty || ville!.touched)" class="alert alert-danger mt-1">
+                                    <div *ngIf="ville!.errors?.['required'] || ville!.errors?.['notOnlyWhitespace']">
+                                    La ville est obligatoire.
+                                    </div>
+
+                                    <div *ngIf="ville!.errors?.['minlength']">
+                                    Le champs ville doit comporter minimim 5 caractères.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- Carte de crédit -->
+                <div formGroupName="carteCredit" class="form-area">
+                    <h3>Carte de crédit</h3>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Type</label></div>
+                        <div class="col-md-9">
+                                <div class="input-space">
+                                    <select formControlName="carteType">
+                                        <option>Visa</option>
+                                        <option>Mastercard</option>
+                                    </select>
+                                    <div *ngIf="carteType!.invalid && (carteType!.dirty || ville!.touched)" class="alert alert-danger mt-1">
+                                        <div *ngIf="carteType!.errors?.['required'] || carteType!.errors?.['notOnlyWhitespace']">
+                                            Le choix du type de carte est obligatoire.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Nom sur la carte</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="nomSurLaCarte" type="text">
+                                <div *ngIf="nomSurLaCarte!.invalid && (nomSurLaCarte!.dirty || nomSurLaCarte!.touched)" class="alert alert-danger mt-1">
+                                    <div *ngIf="nomSurLaCarte!.errors?.['required'] || nomSurLaCarte!.errors?.['notOnlyWhitespace']">
+                                    La nom du titulaire de la carte est obligatoire.
+                                    </div>
+
+                                    <div *ngIf="nomSurLaCarte!.errors?.['minlength']">
+                                    Le nom comporte 5 caractères minimum.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Numéro carte</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="chiffresSurLaCarte" type="text">
+                                <div *ngIf="chiffresSurLaCarte!.invalid && (chiffresSurLaCarte!.dirty || chiffresSurLaCarte!.touched)" class="alert alert-danger mt-1">
+                                    <div *ngIf="chiffresSurLaCarte!.errors?.['required']">
+                                    Le numéro de carte bleue est obligatoire.
+                                    </div>
+
+                                    <div *ngIf="chiffresSurLaCarte!.errors?.['pattern']">
+                                    Veuillez indiquer tous les 16 chiffres présents sur la carte.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Code de sécurité</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="securiteCode" type="text">
+                                <div *ngIf="securiteCode!.invalid && (securiteCode!.dirty || securiteCode!.touched)" class="alert alert-danger mt-1">
+                                    <div *ngIf="securiteCode!.errors?.['required']">
+                                    Le code de sécurité est obligatoire.
+                                    </div>
+
+                                    <div *ngIf="securiteCode!.errors?.['pattern']">
+                                    Veuillez indiquer les 3 chiffres de sécurité présents sur la carte.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Mois d'expiration</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="expirationMois">
+                                    <option *ngFor="let mois of carteCreditMois">
+                                        {{mois}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Année d'expiration</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="expirationAnnee" (change)="handleMoisEtAnnees()">
+                                    <option *ngFor="let annee of carteCreditAnnee">
+                                        {{annee}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Order details -->
+                <div class="form-area">
+                    <h3>Résumé de votre commande</h3>
+
+                    <p>Quantité totale: {{totalQuantite}} </p>
+                    <p>Frais de livraison: GRATUIT</p>
+                    <p>Prix total : {{totalPrix | currency: 'EUR'}} </p>
+                </div>
+
+                <!-- submit button-->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-outline-success">Paiement</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

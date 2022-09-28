@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@ng-bootstrap/ng-bootstrap": "^13.0.0",
+    "card-validator": "^8.1.1",
+    "popper.js": "^1.16.1"
+  }
+}
