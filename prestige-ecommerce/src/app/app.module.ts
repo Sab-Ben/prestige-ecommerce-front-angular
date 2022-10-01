@@ -14,7 +14,7 @@ import { MarqueComponent } from './components/marque/marque.component';
 import { PanierStatutsComponent } from './components/panier-statuts/panier-statuts.component';
 import { PanierDetailsComponent } from './components/panier-details/panier-details.component';
 import { InscriptionComponent } from './components/inscription/inscription.component';
-import { ConnexionComponent } from './components/connexion/connexion.component';
+import { ConnexionComponent } from './components/authentification/authentification.component';
 import { PaiementComponent } from './components/paiement/paiement.component';
 import { ReactiveFormsModule } from '@angular/forms';
 

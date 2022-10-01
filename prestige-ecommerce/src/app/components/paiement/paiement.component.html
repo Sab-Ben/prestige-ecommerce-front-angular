@@ -36,7 +36,7 @@
                                     Le nom est obligatoire.
                                     </div>
 
-                                    <div *ngIf="prenom!.errors?.['minlength']">
+                                    <div *ngIf="nom!.errors?.['minlength']">
                                     Le nom doit comporter au moins 2 caractères.
                                     </div>
                                 </div>
@@ -91,7 +91,7 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <input formControlName="adresse" type="text">
-                                <div *ngIf="adresse!.invalid && (adresse!.dirty || email!.touched)" class="alert alert-danger mt-1">
+                                <div *ngIf="adresse!.invalid && (adresse!.dirty || adresse!.touched)" class="alert alert-danger mt-1">
                                     <div *ngIf="adresse!.errors?.['required'] || adresse!.errors?.['notOnlyWhitespace']">
                                     Le nom de l'adresse et le numéro sont obligatoires.
                                     </div>
@@ -128,7 +128,7 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <input formControlName="ville" type="text">
-                                <div *ngIf="ville!.invalid && (email!.dirty || ville!.touched)" class="alert alert-danger mt-1">
+                                <div *ngIf="ville!.invalid && (ville!.dirty || ville!.touched)" class="alert alert-danger mt-1">
                                     <div *ngIf="ville!.errors?.['required'] || ville!.errors?.['notOnlyWhitespace']">
                                     La ville est obligatoire.
                                     </div>
