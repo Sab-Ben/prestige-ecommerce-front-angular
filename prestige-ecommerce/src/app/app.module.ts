@@ -17,6 +17,7 @@ import { InscriptionComponent } from './components/inscription/inscription.compo
 import { ConnexionComponent } from './components/authentification/authentification.component';
 import { PaiementComponent } from './components/paiement/paiement.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CompteComponent } from './components/compte/compte.component';
 
 
 
@@ -46,7 +47,8 @@ const routes :  Routes = [
     PanierDetailsComponent,
     InscriptionComponent,
     ConnexionComponent,
-    PaiementComponent
+    PaiementComponent,
+    CompteComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

@@ -34,7 +34,7 @@ export class InscriptionComponent implements OnInit {
 get prenom() { return this.inscriptionFormGroup.get('client.prenom');}
 get nom() { return this.inscriptionFormGroup.get('client.nom');}
 get email() { return this.inscriptionFormGroup.get('client.email');}
-get motDePasse() { return this.inscriptionFormGroup.get('client.email');}
+get motDePasse() { return this.inscriptionFormGroup.get('client.motDePasse');}
 get telephone(){ return this.inscriptionFormGroup.get('client.telephone');}
 
 onSubmit() {
