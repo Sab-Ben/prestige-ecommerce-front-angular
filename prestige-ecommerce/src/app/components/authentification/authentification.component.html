@@ -1,0 +1,75 @@
+<form [formGroup]="authentificationFormGroup"(ngSubmit)="onSubmit()">
+   
+        <div class="alert alert-danger"></div>
+
+   
+        <div class="mb-3">
+            <a href="">Se déconnecter</a>
+        </div>
+    
+
+    <div class="container">
+        <div class="d-flex justify-content-center pt-3">
+            <a routerLink="/accueil" routerLinkActive="active-link"><img src="assets/logo/prestige_noir.png" alt="Logo"></a>
+        </div>
+        <div class="row mt-3 g-0 mb-5 height-120">
+            <div class="col-md-6">
+                <div class="h-100 shadow">
+                    <img style="height: 100%" src="assets/cover/connexion.jpg"/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="bg-white p-4 h-100 shadow">
+                    <div formGroupName="client" class="p-3 d-flex justify-content-center flex-column"> <span   class="registerTop text-center">Connexion</span>
+                        <div class="d-flex flex-row align-items-center mb-4">
+                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                <div class="form-outline flex-fill mb-0">
+                                    <input formControlName="email" type="email" name="email" class="form-control mt-2" autocomplete="email" placeholder="Veuillez entrer votre email" required autofocus>
+                                    <div *ngIf="email!.invalid && (email!.dirty || email!.touched)" class="alert alert-danger mt-1">
+                                        <div *ngIf="email!.errors?.['required'] || email!.errors?.['notOnlyWhitespace']">
+                                        L'email est obligatoire.
+                                        </div>
+    
+                                        <div *ngIf="email!.errors?.['pattern']">
+                                        L'email doit être une adresse valide.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        <div class="d-flex flex-row align-items-center mb-4">
+                                <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                <div class="form-outline flex-fill mb-0">
+                                    <input formControlName="motDePasse" type="password" name="password" class="form-control mt-2" autocomplete="current-password" placeholder="Veuillez entrer votre mot de passe" required>
+                                    <div *ngIf="motDePasse!.invalid && (motDePasse!.dirty || motDePasse!.touched)" class="alert alert-danger mt-1">
+                                        <div *ngIf="motDePasse!.errors?.['required'] || motDePasse!.errors?.['notOnlyWhitespace']">
+                                        Le mot de passe est obligatoire.
+                                        </div>
+    
+                                        <div *ngIf="motDePasse!.errors?.['pattern']">
+                                        Le mot de passe doit être compris entre 8 et 15 caractères.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+
+                        
+
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    
+
+<div class="d-flex align-items-baseline justify-content-center mx-4 mb mb-lg-4">
+    <button class="btn btn-outline-dark btn-block" type="submit">Se connecter</button>
+                                <p class="text-muted ms-2 me-2">ou</p>
+                                <a routerLink="/inscription" routerLinkActive="active-link">S'inscrire</a>
+                            </div>
+
+        
+    
+    
