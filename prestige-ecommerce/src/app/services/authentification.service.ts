@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Authentification } from '../common/authentification';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -9,7 +10,7 @@ import { Authentification } from '../common/authentification';
 })
 export class AuthentificationService {
 
-  private authentificationUrl = 'http://localhost:8080/api/connexion/success';
+  private authentificationUrl = environment.apiUrl + '/api/connexion/success';
 
   constructor(private httpClient: HttpClient) { }
 
