@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Achat } from '../common/achat';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { Achat } from '../common/achat';
 })
 export class PaiementService {
 
-  private achatUrl = 'http://localhost:8080/api/paiement/achat';
+  private achatUrl = environment.apiUrl + '/api/paiement/achat';
 
   constructor(private httpClient: HttpClient) { }
 

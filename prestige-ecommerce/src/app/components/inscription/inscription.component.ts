@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Inscription } from 'src/app/common/inscription';
 import { InscriptionService } from 'src/app/services/inscription.service';
 import { PrestigeValidators } from 'src/app/validators/prestige-validators';
+import { PasswordStrengthValidator } from "src/app/validators/password-strength.validators"
+
 
 @Component({
   selector: 'app-inscription',
@@ -24,8 +26,8 @@ export class InscriptionComponent implements OnInit {
         prenom: new FormControl('', [Validators.required, Validators.minLength(2), PrestigeValidators.notOnlyWhitespace]),
         nom: new FormControl('', [Validators.required, Validators.minLength(2), PrestigeValidators.notOnlyWhitespace]),
         email: new FormControl('',[Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'), PrestigeValidators.notOnlyWhitespace]),
-        motDePasse: new FormControl('',[Validators.required, Validators.pattern("^[a-z0-9_-]{8,15}$"), PrestigeValidators.notOnlyWhitespace]),
-        telephone: new FormControl('', [Validators.required, Validators.pattern("^((\\+33-?)|0)?[0-9]{10}$"), PrestigeValidators.notOnlyWhitespace])
+        motDePasse: new FormControl('',[Validators.required, PasswordStrengthValidator, PrestigeValidators.notOnlyWhitespace]),
+        telephone: new FormControl('', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$"), PrestigeValidators.notOnlyWhitespace])
       }),
   
 });
@@ -50,7 +52,7 @@ onSubmit() {
  this.inscriptionService.confirmationInscription(inscription).subscribe({
 
   next:response => {
-    alert(`Votre inscription a bien été enregistrée ${response.confirmationInscription}`); 
+    alert(`Votre inscription a bien été enregistrée : ${response.confirmationInscription}`); 
     this.router.navigate(['/paiement']);
  },
 

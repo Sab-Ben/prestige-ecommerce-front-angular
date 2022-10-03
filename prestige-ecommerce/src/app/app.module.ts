@@ -22,6 +22,7 @@ import { CompteComponent } from './components/compte/compte.component';
 
 
 const routes :  Routes = [
+{path: 'compte', component: CompteComponent},
 {path:'paiement', component: PaiementComponent},
 {path:'connexion', component: ConnexionComponent},
 {path:'inscription', component: InscriptionComponent},

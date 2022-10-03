@@ -4,6 +4,7 @@ import { AuthentificationService } from 'src/app/services/authentification.servi
 import { Authentification } from 'src/app/common/authentification';
 import { PrestigeValidators } from 'src/app/validators/prestige-validators';
 import { Router } from '@angular/router';
+import { PasswordStrengthValidator } from 'src/app/validators/password-strength.validators';
 
 @Component({
   selector: 'app-connexion',
@@ -24,7 +25,7 @@ export class ConnexionComponent implements OnInit {
     this.authentificationFormGroup = this.formBuilder.group({
       client: this.formBuilder.group({
         email: new FormControl('',[Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'), PrestigeValidators.notOnlyWhitespace]),
-        motDePasse: new FormControl('',[Validators.required, Validators.pattern("^[a-z0-9_-]{8,15}$"), PrestigeValidators.notOnlyWhitespace])
+        motDePasse: new FormControl('',[Validators.required, PasswordStrengthValidator, PrestigeValidators.notOnlyWhitespace])
       }),
   
 });
@@ -43,7 +44,7 @@ get motDePasse() { return this.authentificationFormGroup.get('client.motDePasse'
     this.authentificationService.connexionSuccessMessage(authentification).subscribe({
 
       next:response => {
-        alert(`Vous êtes bien connecté ${response.connexionSuccessMessage}`); 
+        alert(`Vous êtes bien connecté : ${response.connexionSuccessMessage}`); 
         this.router.navigate(['/compte']);
      },
     

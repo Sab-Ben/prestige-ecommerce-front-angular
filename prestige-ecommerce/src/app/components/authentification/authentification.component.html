@@ -43,10 +43,10 @@
                                     <input formControlName="motDePasse" type="password" name="password" class="form-control mt-2" autocomplete="current-password" placeholder="Veuillez entrer votre mot de passe" required>
                                     <div *ngIf="motDePasse!.invalid && (motDePasse!.dirty || motDePasse!.touched)" class="alert alert-danger mt-1">
                                         <div *ngIf="motDePasse!.errors?.['required'] || motDePasse!.errors?.['notOnlyWhitespace']">
-                                        Le mot de passe est obligatoire.
+                                        Le mot de passe doit contenir une majuscule, une minuscule, un chiffre et un caractère spécial.
                                         </div>
     
-                                        <div *ngIf="motDePasse!.errors?.['pattern']">
+                                        <div *ngIf="motDePasse!.errors?.['PasswordStrengthValidator']">
                                         Le mot de passe doit être compris entre 8 et 15 caractères.
                                         </div>
                                     </div>

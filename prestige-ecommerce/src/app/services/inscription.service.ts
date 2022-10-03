@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Inscription } from '../common/inscription';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { Inscription } from '../common/inscription';
 })
 export class InscriptionService {
 
-  private inscriptionUrl = 'http://localhost:8080/api/inscription/save';
+  private inscriptionUrl = environment.apiUrl + '/api/inscription/save';
 
   constructor(private httpClient: HttpClient) { }
 
