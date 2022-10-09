@@ -18,6 +18,7 @@ import { ConnexionComponent } from './components/authentification/authentificati
 import { PaiementComponent } from './components/paiement/paiement.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CompteComponent } from './components/compte/compte.component';
+import { RechercheComponent } from './components/recherche/recherche.component';
 
 
 
@@ -27,6 +28,7 @@ const routes :  Routes = [
 {path:'connexion', component: ConnexionComponent},
 {path:'inscription', component: InscriptionComponent},
 {path:'panier-details', component: PanierDetailsComponent},
+{path:'recherche/:mots_cles', component: ListeProduitComponent},
 {path:'produits/:id', component: DetailsProduitComponent},
 {path:'categorie/:id', component: ListeProduitComponent},
 {path:'categorie', component: ListeProduitComponent},
@@ -49,7 +51,8 @@ const routes :  Routes = [
     InscriptionComponent,
     ConnexionComponent,
     PaiementComponent,
-    CompteComponent
+    CompteComponent,
+    RechercheComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

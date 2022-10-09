@@ -24,6 +24,7 @@ totalQuantite: number = 0;
 carteCreditAnnee: number[]=[];
 carteCreditMois: number[]=[];
 
+
   constructor(private formBuilder: FormBuilder,
               private prestigeFormService: PrestigeFormService,
               private panierService: PanierService,
@@ -35,6 +36,9 @@ carteCreditMois: number[]=[];
     this.gardeDetailsPanier();
     
     this.paiementFormGroup = this.formBuilder.group({
+      client: this.formBuilder.group({
+        email: new FormControl('',[Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'), PrestigeValidators.notOnlyWhitespace])
+      }),
       adresseLivraison: this.formBuilder.group({
         adresse: new FormControl('', [Validators.required, Validators.minLength(15), PrestigeValidators.notOnlyWhitespace]),
         codePostale: new FormControl('', [Validators.required, Validators.minLength(5), PrestigeValidators.notOnlyWhitespace]),
@@ -73,6 +77,7 @@ carteCreditMois: number[]=[];
     );
   }
   
+  get email() { return this.paiementFormGroup.get('client.email');}
 
   get adresse(){ return this.paiementFormGroup.get('adresseLivraison.adresse');}
   get codePostale(){ return this.paiementFormGroup.get('adresseLivraison.codePostale');}

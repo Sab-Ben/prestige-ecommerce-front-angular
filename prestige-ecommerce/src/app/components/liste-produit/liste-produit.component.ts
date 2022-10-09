@@ -14,7 +14,7 @@ export class ListeProduitComponent implements OnInit {
 
   produits: Produit[] = [];
   currentCategoryId: number = 1;
-
+  searchMode: boolean = false;
 
   constructor(private produitService: ProduitService,
               private panierService: PanierService,
@@ -26,7 +26,25 @@ export class ListeProduitComponent implements OnInit {
     });
   }
 
-  listeProduits() {
+  listeProduits(){
+    this.searchMode = this.route.snapshot.paramMap.has('mots_cles');
+    if (this.searchMode) {
+      this.handleRechercheProduits();
+    } else {
+      this.handleListeProduits();
+    }
+    
+  }
+  handleRechercheProduits(){
+    const motCle : string = this.route.snapshot.paramMap.get('mots_cles')!;
+    this.produitService.rechercheProduits(motCle).subscribe(
+      data => {
+        this.produits = data;
+      }
+    )
+  }
+
+  handleListeProduits() {
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
 
     if (hasCategoryId) {
@@ -42,6 +60,8 @@ export class ListeProduitComponent implements OnInit {
       }
     )
   }
+
+
 
   addToCart(produit: Produit) {
     let panierItem = new PanierItem(produit.id!, produit.nomProduit, produit.image, produit.prix);

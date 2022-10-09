@@ -52,7 +52,8 @@ onSubmit() {
  this.inscriptionService.confirmationInscription(inscription).subscribe({
 
   next:response => {
-    alert(`Votre inscription a bien été enregistrée : ${response.confirmationInscription}`); 
+    let utilisateur = response.confirmationInscription;
+    alert(`Votre inscription a bien été enregistrée : ${utilisateur.prenom}`); 
     this.router.navigate(['/paiement']);
  },
 

@@ -18,6 +18,11 @@
                         <button (click)="addToCart(tempProduit)" class="btn btn-outline-dark">Ajouter au panier</button>
                     </div>
                 </div>
+
+                <!-- Si le produit n'existe pas-->
+                <div *ngIf="produits?.length == 0" class="alert alert-warning" role="alert">
+                    Le produit cherché n'a pas été trouvé.
+                </div>
             </div>
         </div>
     </div>

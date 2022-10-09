@@ -1,10 +1,39 @@
-<div class="main-content page-m">
-    <div class="section-content section-content-p30">
-        <div class="container-fluid">
+            <br/>
+            <br/>
+            <br/>
+            <div class="container">
+                <div class="d-flex justify-content-center pt-3">
+                    <a routerLink="/accueil" routerLinkActive="active-link"><img src="assets/logo/prestige_noir.png" alt="Logo"></a>
+                </div>
+            <br/>
+            <br/>
 
             <form [formGroup]="paiementFormGroup" (ngSubmit)="onSubmit()">
 
-                <!-- Addresse de livraison -->
+                <!-- Client -->
+                <div formGroupName="client" class="form-area">
+                    <h3>Client</h3>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Email</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="email" name="email" class="form-control mt-2" autocomplete="email" placeholder="Indiquez votre email" required autofocus>
+                                <div *ngIf="email!.invalid && (email!.dirty || email!.touched)" class="alert alert-danger mt-1">
+                                    <div *ngIf="email!.errors?.['required'] || email!.errors?.['notOnlyWhitespace']">
+                                    L'email est obligatoire.
+                                    </div>
+
+                                    <div *ngIf="email!.errors?.['pattern']">
+                                    L'email doit être une adresse valide.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adresse de livraison -->
                 <div formGroupName="adresseLivraison" class="form-area">
                     <h3>Adresse de livraison</h3>
 
@@ -186,5 +215,5 @@
             </form>
 
         </div>
-    </div>
-</div>
+
+
