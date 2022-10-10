@@ -5,6 +5,7 @@ import { Inscription } from 'src/app/common/inscription';
 import { InscriptionService } from 'src/app/services/inscription.service';
 import { PrestigeValidators } from 'src/app/validators/prestige-validators';
 import { PasswordStrengthValidator } from "src/app/validators/password-strength.validators"
+import { Utilisateur } from 'src/app/common/utilisateur';
 
 
 @Component({
@@ -15,7 +16,6 @@ import { PasswordStrengthValidator } from "src/app/validators/password-strength.
 export class InscriptionComponent implements OnInit {
 
   inscriptionFormGroup! : FormGroup;
-
   constructor(private formBuilder : FormBuilder,
               private inscriptionService: InscriptionService,
               private router: Router) { }
@@ -53,8 +53,8 @@ onSubmit() {
 
   next:response => {
     let utilisateur = response.confirmationInscription;
-    alert(`Votre inscription a bien été enregistrée : ${utilisateur.prenom}`); 
-    this.router.navigate(['/paiement']);
+    alert(`Votre inscription a bien été enregistrée : ${utilisateur.prenom}`);
+    this.router.navigateByUrl('/paiement', {state : utilisateur}); 
  },
 
  error:erreur => {

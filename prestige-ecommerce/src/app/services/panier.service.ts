@@ -13,7 +13,15 @@ export class PanierService {
   totalPrix: Subject<number> = new BehaviorSubject<number>(0);
   totalQuantite: Subject<number> = new BehaviorSubject<number>(0);
 
-  constructor() { }
+  storage: Storage = localStorage;
+
+  constructor() {
+    let data = JSON.parse(this.storage.getItem('panierItems')!);
+    if (data != null) {
+      this.panierItems = data;
+      this.calculPanierTotals();
+    }
+  }
 
   addToCart(panierItem: PanierItem) {
 
@@ -55,6 +63,12 @@ export class PanierService {
       // éditer les nouvelles valeurs afin que cela soit mis à jour auprès du component panier-status
       this.totalPrix.next(valeurPrixTotal);
       this.totalQuantite.next(valeurQuantiteTotal);
+
+      this.persistPanierItems();
+  }
+
+  persistPanierItems(){
+    this.storage.setItem('panierItems', JSON.stringify(this.panierItems));
   }
 
   removeToCart(panierItem: PanierItem){

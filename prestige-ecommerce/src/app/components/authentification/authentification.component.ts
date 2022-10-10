@@ -14,6 +14,8 @@ import { PasswordStrengthValidator } from 'src/app/validators/password-strength.
 export class ConnexionComponent implements OnInit {
 
   authentificationFormGroup! : FormGroup;
+  isAuthenticated: boolean = false;
+  userFullName: string = '';
 
   constructor(private formBuilder: FormBuilder,
               private authentificationService : AuthentificationService,
@@ -27,7 +29,6 @@ export class ConnexionComponent implements OnInit {
         email: new FormControl('',[Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'), PrestigeValidators.notOnlyWhitespace]),
         motDePasse: new FormControl('',[Validators.required, PasswordStrengthValidator, PrestigeValidators.notOnlyWhitespace])
       }),
-  
 });
 
 }
@@ -37,10 +38,8 @@ get motDePasse() { return this.authentificationFormGroup.get('client.motDePasse'
 
 
   onSubmit(){
-    console.log("onSubmit");
     let authentification = new Authentification();
     authentification.utilisateur =  this.authentificationFormGroup.controls['client'].value
-
     this.authentificationService.connexionSuccessMessage(authentification).subscribe({
 
       next:response => {
@@ -55,5 +54,5 @@ get motDePasse() { return this.authentificationFormGroup.get('client.motDePasse'
       }
      );
   }
-
+ 
 }

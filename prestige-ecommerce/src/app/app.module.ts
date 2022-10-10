@@ -19,11 +19,12 @@ import { PaiementComponent } from './components/paiement/paiement.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CompteComponent } from './components/compte/compte.component';
 import { RechercheComponent } from './components/recherche/recherche.component';
+import { AuthentificationGuard } from './authentification.guard';
 
 
 
 const routes :  Routes = [
-{path: 'compte', component: CompteComponent},
+{path:'compte', component: CompteComponent, canActivate:[AuthentificationGuard]},
 {path:'paiement', component: PaiementComponent},
 {path:'connexion', component: ConnexionComponent},
 {path:'inscription', component: InscriptionComponent},

@@ -13,24 +13,7 @@
                 <!-- Client -->
                 <div formGroupName="client" class="form-area">
                     <h3>Client</h3>
-
-                    <div class="row">
-                        <div class="col-md-2"> <label>Email</label></div>
-                        <div class="col-md-9">
-                            <div class="input-space">
-                                <input formControlName="email" name="email" class="form-control mt-2" autocomplete="email" placeholder="Indiquez votre email" required autofocus>
-                                <div *ngIf="email!.invalid && (email!.dirty || email!.touched)" class="alert alert-danger mt-1">
-                                    <div *ngIf="email!.errors?.['required'] || email!.errors?.['notOnlyWhitespace']">
-                                    L'email est obligatoire.
-                                    </div>
-
-                                    <div *ngIf="email!.errors?.['pattern']">
-                                    L'email doit être une adresse valide.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {{utilisateur.prenom}}
                 </div>
 
                 <!-- Adresse de livraison -->

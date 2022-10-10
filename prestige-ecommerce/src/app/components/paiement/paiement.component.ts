@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Navigation, Router } from '@angular/router';
 import { Achat } from 'src/app/common/achat';
 import { Commande } from 'src/app/common/commande';
 import { CommandeItem } from 'src/app/common/commandeitem';
+import { Utilisateur } from 'src/app/common/utilisateur';
 import { PaiementService } from 'src/app/services/paiement.service';
 import { PanierService } from 'src/app/services/panier.service';
 import { PrestigeFormService } from 'src/app/services/prestige-form.service';
@@ -16,6 +17,8 @@ import { PrestigeValidators } from 'src/app/validators/prestige-validators';
 })
 export class PaiementComponent implements OnInit {
 
+  utilisateur! : Utilisateur;
+
   paiementFormGroup!: FormGroup;
 
 totalPrix: number = 0;
@@ -24,12 +27,13 @@ totalQuantite: number = 0;
 carteCreditAnnee: number[]=[];
 carteCreditMois: number[]=[];
 
-
   constructor(private formBuilder: FormBuilder,
               private prestigeFormService: PrestigeFormService,
               private panierService: PanierService,
               private paiementService : PaiementService,
-              private router : Router) { }
+              private router : Router,
+              private activatedRoute : ActivatedRoute) 
+              {  }  
 
   ngOnInit(): void {
 
@@ -66,7 +70,10 @@ carteCreditMois: number[]=[];
         this.carteCreditAnnee= data;
       }
     )
+
+    this.utilisateur=history.state;
   }
+
   gardeDetailsPanier() {
     this.panierService.totalQuantite.subscribe(
       totalQuantite => this.totalQuantite = totalQuantite
