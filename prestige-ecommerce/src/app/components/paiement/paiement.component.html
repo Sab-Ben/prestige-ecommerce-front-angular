@@ -10,12 +10,6 @@
 
             <form [formGroup]="paiementFormGroup" (ngSubmit)="onSubmit()">
 
-                <!-- Client -->
-                <div formGroupName="client" class="form-area">
-                    <h3>Client</h3>
-                    {{utilisateur.prenom}}
-                </div>
-
                 <!-- Adresse de livraison -->
                 <div formGroupName="adresseLivraison" class="form-area">
                     <h3>Adresse de livraison</h3>

@@ -40,9 +40,6 @@ carteCreditMois: number[]=[];
     this.gardeDetailsPanier();
     
     this.paiementFormGroup = this.formBuilder.group({
-      client: this.formBuilder.group({
-        email: new FormControl('',[Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'), PrestigeValidators.notOnlyWhitespace])
-      }),
       adresseLivraison: this.formBuilder.group({
         adresse: new FormControl('', [Validators.required, Validators.minLength(15), PrestigeValidators.notOnlyWhitespace]),
         codePostale: new FormControl('', [Validators.required, Validators.minLength(5), PrestigeValidators.notOnlyWhitespace]),
@@ -104,7 +101,6 @@ carteCreditMois: number[]=[];
 
     let commande = new Commande(this.totalPrix, this.totalQuantite );
     
-
     const panierItems = this.panierService.panierItems;
 
     /*let commandeItem : CommandeItem[] = [];
@@ -115,6 +111,7 @@ carteCreditMois: number[]=[];
     let commandeItems: CommandeItem[] = panierItems.map(tempPanierItem => new CommandeItem(tempPanierItem));
 
     let achat = new Achat();
+    achat.utilisateur = this.utilisateur;
     achat.adresse = this.paiementFormGroup.controls['adresseLivraison'].value;
     achat.commande = commande;
     achat.commandeItems = commandeItems;

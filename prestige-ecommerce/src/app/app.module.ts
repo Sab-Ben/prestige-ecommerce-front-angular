@@ -24,7 +24,7 @@ import { AuthentificationGuard } from './authentification.guard';
 
 
 const routes :  Routes = [
-{path:'compte', component: CompteComponent, canActivate:[AuthentificationGuard]},
+{path:'compte', component: CompteComponent},
 {path:'paiement', component: PaiementComponent},
 {path:'connexion', component: ConnexionComponent},
 {path:'inscription', component: InscriptionComponent},
