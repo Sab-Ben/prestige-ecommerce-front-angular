@@ -81,7 +81,6 @@ carteCreditMois: number[]=[];
     );
   }
   
-  get email() { return this.paiementFormGroup.get('client.email');}
 
   get adresse(){ return this.paiementFormGroup.get('adresseLivraison.adresse');}
   get codePostale(){ return this.paiementFormGroup.get('adresseLivraison.codePostale');}
@@ -137,7 +136,7 @@ carteCreditMois: number[]=[];
 
     this.paiementFormGroup.reset();
 
-    this.router.navigateByUrl("/produits");
+    this.router.navigateByUrl("/accueil");
   }
 
   handleMoisEtAnnees(){

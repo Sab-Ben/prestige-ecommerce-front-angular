@@ -58,7 +58,7 @@ onSubmit() {
  },
 
  error:erreur => {
-  alert(`Il y a une erreur: ${erreur.message}`);
+  alert(`Il y a une erreur: votre email est déjà utilisé`);
     },
   }
  );
