@@ -1,13 +1,19 @@
-import { number } from "card-validator";
 import { Produit } from "./produit";
 
 export class PanierItem {
 
-    constructor( public id?: string,
-    public nomProduit?: string,
-    public image?: string,
-    public prix: number = 1, 
-    public quantite: number = 1,
-    ){ }
+    id!: string;
+    nomProduit!: string;
+    image!: string;
+    prix!: number; 
+    quantite!: number;
+
+    constructor(produit?: Produit) {
+        this.id = produit?.id || '';
+        this.nomProduit = produit?.nomProduit || '';
+        this.image = produit?.image || '';
+        this.prix = produit?.prix || 0;
+        this.quantite = 1;
+    }
    
 }

@@ -31,8 +31,7 @@ carteCreditMois: number[]=[];
               private prestigeFormService: PrestigeFormService,
               private panierService: PanierService,
               private paiementService : PaiementService,
-              private router : Router,
-              private activatedRoute : ActivatedRoute) 
+              private router : Router) 
               {  }  
 
   ngOnInit(): void {
@@ -98,14 +97,11 @@ carteCreditMois: number[]=[];
       return;
     }
 
-    let commande = new Commande(this.totalPrix, this.totalQuantite );
+    let commande = new Commande();
+    commande.totalPrix = this.totalPrix;
+    commande.totalQuantite = this.totalQuantite;
     
     const panierItems = this.panierService.panierItems;
-
-    /*let commandeItem : CommandeItem[] = [];
-    for(let i=0; i < panierItems.length; i++) {
-      commandeItem[i] = new CommandeItem(panierItems[i]);
-    }*/
 
     let commandeItems: CommandeItem[] = panierItems.map(tempPanierItem => new CommandeItem(tempPanierItem));
 
@@ -133,9 +129,7 @@ carteCreditMois: number[]=[];
     this.panierService.panierItems = [];
     this.panierService.totalPrix.next(0);
     this.panierService.totalQuantite.next(0);
-
     this.paiementFormGroup.reset();
-
     this.router.navigateByUrl("/accueil");
   }
 

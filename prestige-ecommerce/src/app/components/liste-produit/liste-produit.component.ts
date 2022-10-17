@@ -64,7 +64,7 @@ export class ListeProduitComponent implements OnInit {
 
 
   addToCart(produit: Produit) {
-    let panierItem = new PanierItem(produit.id!, produit.nomProduit, produit.image, produit.prix);
+    const panierItem = new PanierItem(produit);
 
     this.panierService.addToCart(panierItem);
   }

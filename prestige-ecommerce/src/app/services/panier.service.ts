@@ -13,7 +13,7 @@ export class PanierService {
   totalPrix: Subject<number> = new BehaviorSubject<number>(0);
   totalQuantite: Subject<number> = new BehaviorSubject<number>(0);
 
-  storage: Storage = localStorage;
+  storage: Storage = sessionStorage;
 
   constructor() {
     let data = JSON.parse(this.storage.getItem('panierItems')!);
@@ -27,18 +27,15 @@ export class PanierService {
 
     // observer si le produit est déjà dans le panier
     let produitDejaDansLePanier : boolean = false;
-    let existeDansLePanier : PanierItem = new PanierItem("", "", "", 0);
+    let existeDansLePanier : PanierItem = undefined;
 
     if(this.panierItems.length > 0) {
 
       // trouver le produit dans le panier à partir de l'id
-      for (let tempPanierItem of this.panierItems){
-        if(tempPanierItem.id === panierItem.id){
-          existeDansLePanier = tempPanierItem;
-          produitDejaDansLePanier = true;
-          break;
-        }
-      }
+      existeDansLePanier = this.panierItems.find( tempPanierItem => tempPanierItem.id === panierItem.id );
+
+      // vérifier si on le
+      produitDejaDansLePanier  = (existeDansLePanier != undefined);
     }
       if (produitDejaDansLePanier){
         //incrémenter la quantité
