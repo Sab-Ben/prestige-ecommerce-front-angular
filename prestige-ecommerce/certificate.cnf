@@ -1,0 +1,29 @@
+[req]
+# Don't prompt the user when running openssl certificate generation
+default_bits = 2048
+prompt = no
+default_md = sha256
+x509_extensions = v3_req
+
+# Reference to the section containing the Distinguished Name (information about your company/entity)
+distinguished_name = dn
+
+[dn]
+# Country, State and Locality (city)
+C = FR
+ST = IDF
+L = Paris
+
+# Organization and Organizational Unit (department name, group name)
+O = Prestige
+OU = Prestige Unit
+emailAddress = prestigevisiteur@gmail.com
+
+# Common Name (fully qualified domain name of your website server)
+CN = localhost
+
+[v3_req]
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = localhost
