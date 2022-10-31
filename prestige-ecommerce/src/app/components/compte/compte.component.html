@@ -19,10 +19,6 @@
 								aria-controls="address" aria-selected="true">
 								<i class="ti-location-pin"></i>Adresse de livraison</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="">
-								<i class="ti-lock"></i>Déconnexion</a>
-						</li>
 					</ul>
 				</div>
 			</div>
@@ -52,14 +48,12 @@
 													</tr>
 												</thead>
 												<tbody>
-													<tr>
-														<td>#1234</td>
-														<td>March 15, 2020</td>
-														<td>Processing</td>
-														<td>$78.00 for 1 item</td>
-														<td>
-															<a href="#" class="btn btn-fill-out btn-sm">View</a>
-														</td>
+													<tr *ngFor="let tempInfoUtilisateur of listeUtilisateur">
+														<td>{{tempInfoUtilisateur.nom}}</td>
+														<td>{{tempInfoUtilisateur.prenom}}</td>
+														<td>{{tempInfoUtilisateur.email}}</td>
+														<td>{{tempInfoUtilisateur.telephone}}</td>
+														
 													</tr>
 												</tbody>
 											</table>
@@ -81,26 +75,27 @@
 									<table class="table">
 										<thead>
 											<tr>
-												<th>Commande</th>
+												<th>Numéro de suivi</th>
+												<th>Prix Total</th>
+												<th>Quantité Total</th>
 												<th>Date</th>
-												<th>Status</th>
-												<th>Total</th>
-												<th>Actions</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>#1234</td>
-												<td>March 15, 2020</td>
-												<td>Processing</td>
-												<td>$78.00 for 1 item</td>
-												<td>
-													<a href="#" class="btn btn-fill-out btn-sm">View</a>
-												</td>
+											<tr *ngFor="let tempHistoriqueCommande of listeHistoriqueCommande">
+												<td>{{ tempHistoriqueCommande.numeroSuiviCommande}}</td>
+												<td>{{ tempHistoriqueCommande.prixTotal | currency : 'EUR'}}</td>
+												<td>{{ tempHistoriqueCommande.quantiteTotal}}</td>
+												<td>{{ tempHistoriqueCommande.dateCommande | date : 'medium'}}</td>
 											</tr>
 										</tbody>
 									</table>
 								</div>
+								<!-- si l'historique de commande est vide, envoi d'un message -->
+								<div *ngIf="listeHistoriqueCommande.length == 0" class="alert alert-warning col-md-12" role="alert">
+									Aucune commande passée.
+								</div>
+
 							</div>
 						</div>
 					</div>
@@ -108,28 +103,34 @@
 
 						
 						<div class="collapse" id="address" role="tabpanel" aria-labelledby="address-tab">
-						<div class="row">
-						</div>
-						<div class="row">
-							<div class="col-lg-6">
-								<div class="card mb-3 mb-lg-0">
+							<div class="card">
 									<div class="card-header">
 										<h3>Adresse</h3>
 									</div>
 									<div class="card-body">
-										<address>
-											<br>
-											<br>
-											<br>
-											<br>
-											<br>
-											<br>
-										</address>
+										<div class="table-responsive">
+											<table class="table">
+												<thead>
+													<tr>
+														<th>Nom adresse</th>
+														<th>Adresse</th>
+														<th>Code Postale</th>
+														<th>Ville</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr *ngFor="let tempInfoAdresses of listeAdresses">
+														<td>{{ tempInfoAdresses.nomAdresse}}</td>
+														<td>{{ tempInfoAdresses.adresse}}</td>
+														<td>{{ tempInfoAdresses.codePostale}}</td>
+														<td>{{ tempInfoAdresses.ville}}</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
 									</div>
-								</div>
 							</div>
 						</div>
-					</div>
 				</div>
 			</div>
 		</div>

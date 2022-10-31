@@ -147,7 +147,13 @@ a,a:hover{
 .product-box{
     background:#e5e5e5;
     padding-left:120px;
-    padding-right:50px
+    padding-right:50px;
+    
+}
+
+.product-box img {
+    width: 150px;
+    height: 225px;
 }
 
 .main-content{

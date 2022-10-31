@@ -7,5 +7,4 @@ export class Utilisateur {
     telephone!: number;
 
 
-
 }

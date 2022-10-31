@@ -33,18 +33,7 @@
 		
 			<div class="col-md-2 d-flex justify-content-center align-items-center">
 		
-				<div class="dropdown">
-					<a type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-						<i class="fas fa-user text-white"></i>
-					</a>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-						<li><a *ngIf="!isAuthenticated" class="dropdown-item" routerLink="/inscription" routerLinkActive="active-link">Inscription</a></li>
-						<li><a *ngIf="!isAuthenticated" class="dropdown-item" routerLink="/connexion" routerLinkActive="active-link">Connexion</a></li>
-						
-						<li><a *ngIf="isAuthenticated" class="dropdown-item" routerLink="/compte" >Mon compte</a></li>
-						<li><a *ngIf="isAuthenticated" class="dropdown-item" href="">Deconnexion</a></li>
-					</ul>
-				</div>
+				<app-authentification-status></app-authentification-status>
 
 				<app-panier-statuts></app-panier-statuts>
 				

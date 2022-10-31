@@ -7,13 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'prestige-ecommerce';
-  isAuthenticated: boolean = false;
-  userFullName: string = '';
-
+ 
   constructor() {}
 
   ngOnInit(): void {
 
-    
   }
+
 }

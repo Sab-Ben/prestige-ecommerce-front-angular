@@ -9,9 +9,10 @@ import { Utilisateur } from '../common/utilisateur';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthentificationService {
-
-  private authentificationUrl = environment.apiUrl + '/api/connexion/success';
+export class AuthentificationService{
+ 
+  storage: Storage = sessionStorage;
+  private authentificationUrl = environment.apiUrl + '/connexion/success';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -19,15 +20,7 @@ export class AuthentificationService {
     return this.httpClient.post<Authentification>(this.authentificationUrl, authentification);
   }
 
-  public seConnecter(utilisateur : Utilisateur) {
-    localStorage.setItem('ACCESS_TOKEN', "access_token");
-  }
-
-  public estConnecte(){
-    return localStorage.getItem('ACCESS_TOKEN') !==null;
-  }
-
-  public seDeconnecter(){
-    localStorage.removeItem('ACCESS_TOKEN');
+  getUtilisateur(): any {
+    return this.storage.getItem('utilisateur');
   }
 }

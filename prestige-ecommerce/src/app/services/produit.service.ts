@@ -10,7 +10,7 @@ import { ReturnStatement } from '@angular/compiler';
 })
 export class ProduitService {
  
-  private baseUrl = environment.apiUrl + '/api/produits';
+  private baseUrl = environment.apiUrl + '/produits';
 
   constructor(private httpClient : HttpClient) { }
 

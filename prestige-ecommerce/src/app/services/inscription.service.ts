@@ -9,7 +9,7 @@ import { Inscription } from '../common/inscription';
 })
 export class InscriptionService {
 
-  private inscriptionUrl = environment.apiUrl + '/api/inscription/save';
+  private inscriptionUrl = environment.apiUrl + '/inscription/save';
 
   constructor(private httpClient: HttpClient) { }
 

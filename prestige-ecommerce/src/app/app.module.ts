@@ -20,11 +20,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CompteComponent } from './components/compte/compte.component';
 import { RechercheComponent } from './components/recherche/recherche.component';
 import { AuthentificationGuard } from './authentification.guard';
-
-
+import { AuthentificationStatusComponent } from './components/authentification-status/authentification-status.component';
+import { DataSharingService } from './services/data-sharing.service';
 
 const routes :  Routes = [
-{path:'compte', component: CompteComponent,},
+{path:'compte', component: CompteComponent, canActivate:[AuthentificationGuard]},
 {path:'paiement', component: PaiementComponent},
 {path:'connexion', component: ConnexionComponent},
 {path:'inscription', component: InscriptionComponent},
@@ -53,15 +53,17 @@ const routes :  Routes = [
     ConnexionComponent,
     PaiementComponent,
     CompteComponent,
-    RechercheComponent
+    RechercheComponent,
+    AuthentificationStatusComponent
   ],
+
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-
   ],
+
   providers: [{
     provide: LOCALE_ID,
     useValue: 'fr-FR'
@@ -70,7 +72,9 @@ const routes :  Routes = [
      provide: DEFAULT_CURRENCY_CODE,
      useValue: 'EUR'
    },
-   ProduitService],
+   ProduitService,
+   DataSharingService],
+
   bootstrap: [AppComponent],
 })
 

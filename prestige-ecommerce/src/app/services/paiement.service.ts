@@ -9,7 +9,7 @@ import { Achat } from '../common/achat';
 })
 export class PaiementService {
 
-  private achatUrl = environment.apiUrl + '/api/paiement/achat';
+  private achatUrl = environment.apiUrl + '/paiement/achat';
 
   constructor(private httpClient: HttpClient) { }
 

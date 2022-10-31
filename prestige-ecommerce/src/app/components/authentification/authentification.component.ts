@@ -6,6 +6,7 @@ import { PrestigeValidators } from 'src/app/validators/prestige-validators';
 import { Router } from '@angular/router';
 import { PasswordStrengthValidator } from 'src/app/validators/password-strength.validators';
 
+
 @Component({
   selector: 'app-connexion',
   templateUrl: './authentification.component.html',
@@ -14,13 +15,11 @@ import { PasswordStrengthValidator } from 'src/app/validators/password-strength.
 export class ConnexionComponent implements OnInit {
 
   authentificationFormGroup! : FormGroup;
-  isAuthenticated: boolean = false;
-  userFullName: string = '';
+  storage: Storage = sessionStorage;
 
   constructor(private formBuilder: FormBuilder,
               private authentificationService : AuthentificationService,
               private router: Router) { 
-    
   }
 
   ngOnInit(): void {
@@ -29,8 +28,7 @@ export class ConnexionComponent implements OnInit {
         email: new FormControl('',[Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'), PrestigeValidators.notOnlyWhitespace]),
         motDePasse: new FormControl('',[Validators.required, PasswordStrengthValidator, PrestigeValidators.notOnlyWhitespace])
       }),
-});
-
+  });
 }
 
 get email() { return this.authentificationFormGroup.get('client.email');}
@@ -44,15 +42,16 @@ get motDePasse() { return this.authentificationFormGroup.get('client.motDePasse'
 
       next:response => {
         alert(`Vous êtes bien connecté : ${response.connexionSuccessMessage}`); 
-        this.router.navigate(['/compte']);
-     },
+        this.storage.setItem('utilisateur',JSON.stringify(response['utilisateur']));
+        this.router.navigate(['/compte']); 
+      },
     
-     error:erreur => {
+    error:erreur => {
       alert(`Il y a une erreur: votre compte n'existe pas.`);
       this.router.navigate(['/accueil']);
         },
       }
-     );
+    );
   }
- 
 }
+
