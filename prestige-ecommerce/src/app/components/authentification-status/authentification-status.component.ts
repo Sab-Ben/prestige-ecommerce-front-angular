@@ -36,6 +36,8 @@ export class AuthentificationStatusComponent implements OnInit {
 
   logout(){
     sessionStorage.removeItem('utilisateur'); 
+    sessionStorage.removeItem('adresses'); 
+    sessionStorage.removeItem('commandes'); 
     this.router.navigate(['/accueil']);
   }
 }

@@ -1,8 +1,8 @@
 export class HistoriqueCommande {
 
     numeroSuiviCommande! : string;
-    prixTotal! : number;
-    quantiteTotal! : number;
-    dateCommande! : Date;
+    totalPrix! : number;
+    totalQuantite! : number;
+    date! : Date;
 
 }

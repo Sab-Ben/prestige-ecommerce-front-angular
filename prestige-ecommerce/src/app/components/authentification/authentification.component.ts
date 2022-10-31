@@ -43,12 +43,14 @@ get motDePasse() { return this.authentificationFormGroup.get('client.motDePasse'
       next:response => {
         alert(`Vous êtes bien connecté : ${response.connexionSuccessMessage}`); 
         this.storage.setItem('utilisateur',JSON.stringify(response['utilisateur']));
+        this.storage.setItem('adresses',JSON.stringify(response['adresses']));
+        this.storage.setItem('commandes',JSON.stringify(response['commandes']));
         this.router.navigate(['/compte']); 
       },
     
     error:erreur => {
       alert(`Il y a une erreur: votre compte n'existe pas.`);
-      this.router.navigate(['/accueil']);
+      this.router.navigate(['/connexion']);
         },
       }
     );

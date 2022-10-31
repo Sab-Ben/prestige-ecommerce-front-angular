@@ -16,7 +16,7 @@ export class CompteComponent implements OnInit {
 
   listeHistoriqueCommande: HistoriqueCommande[] = [];
   listeAdresses : InfoAdresses [] = [];
-  listeUtilisateur : InfoUtilisateur [] = [];
+  utilisateur : InfoUtilisateur | undefined;
   storage: Storage = sessionStorage; 
 
   constructor(private historiqueCommandeService : HistoriqueCommandeService,
@@ -31,34 +31,36 @@ export class CompteComponent implements OnInit {
   }
   
   handleHistoriqueCommande() {
-    const emailUser = JSON.parse(this.storage.getItem('utilisateurEmail')!);
-
-    this.historiqueCommandeService.recupHistoriqueCommande(emailUser).subscribe(
-      data => {
-        this.listeHistoriqueCommande = data._embedded.commandes;
-      }
-    )
+    const userCommande = JSON.parse(this.storage.getItem('commandes') || '[]') ;
+    for(let commande of userCommande){
+      this.listeHistoriqueCommande.push({
+        numeroSuiviCommande: commande.numeroSuiviCommande,
+        totalPrix: commande.totalPrix,
+        totalQuantite: commande.totalQuantite,
+        date: commande.date
+      })
+    }
   }
 
   handleInformationUtilisateur() {
-    const emailUser = JSON.parse(this.storage.getItem('utilisateurEmail')!);
-
-    this.infoUtilisateurService.recupInfoUtilisateur(emailUser).subscribe(
-      data => {
-        this.listeUtilisateur = data._embedded.generales;
-      }
-    )
+    const userInfo = JSON.parse(this.storage.getItem('utilisateur')!)
+    this.utilisateur = {
+      nom: userInfo.nom, 
+      prenom: userInfo.prenom, 
+      email:userInfo.email, 
+      telephone:userInfo.telephone
+    };
   }
 
   handleAdressesInformation() {
-    const emailUser = JSON.parse(this.storage.getItem('utilisateurEmail')!);
-
-    this.infoAdresseService.recupInfoAdresse(emailUser).subscribe(
-      data => {
-        this.listeAdresses = data._embedded.adresses;
-      }
-    )
+    const userAdresse = JSON.parse(this.storage.getItem('adresses')|| '[]');
+    for(let adresse of userAdresse){
+      this.listeAdresses.push({
+        nomAdresse: adresse.nomAdresse,
+        adresse: adresse.adresse,
+        codePostale: adresse.codePostale,
+        ville: adresse.ville
+      })
+    }
   }
-
-  
 }

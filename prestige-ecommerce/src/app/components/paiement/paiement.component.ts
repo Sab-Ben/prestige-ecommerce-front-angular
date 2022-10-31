@@ -40,6 +40,7 @@ carteCreditMois: number[]=[];
     
     this.paiementFormGroup = this.formBuilder.group({
       adresseLivraison: this.formBuilder.group({
+        nomAdresse: new FormControl('', [Validators.required, Validators.minLength(5), PrestigeValidators.notOnlyWhitespace]),
         adresse: new FormControl('', [Validators.required, Validators.minLength(15), PrestigeValidators.notOnlyWhitespace]),
         codePostale: new FormControl('', [Validators.required, Validators.minLength(5), PrestigeValidators.notOnlyWhitespace]),
         ville: new FormControl('', [Validators.required, Validators.minLength(5), PrestigeValidators.notOnlyWhitespace])
@@ -81,6 +82,7 @@ carteCreditMois: number[]=[];
   }
   
 
+  get nomAdresse(){ return this.paiementFormGroup.get('adresseLivraison.nomAdresse');}
   get adresse(){ return this.paiementFormGroup.get('adresseLivraison.adresse');}
   get codePostale(){ return this.paiementFormGroup.get('adresseLivraison.codePostale');}
   get ville(){ return this.paiementFormGroup.get('adresseLivraison.ville');}

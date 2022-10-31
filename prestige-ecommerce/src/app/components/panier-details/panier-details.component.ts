@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PanierItem } from 'src/app/common/panier-item';
+import { DataSharingService } from 'src/app/services/data-sharing.service';
 import { PanierService } from 'src/app/services/panier.service';
 
 @Component({
@@ -12,14 +13,20 @@ export class PanierDetailsComponent implements OnInit {
   panierItems: PanierItem[] = [];
   totalPrix: number = 0;
   totalQuantite: number = 0;
+  storage: Storage = sessionStorage;
+  isUserLogin: boolean = false;
+  isAuthenticated: boolean = false;
 
-  constructor(private panierService: PanierService) { }
+  constructor(private panierService: PanierService, 
+              private dataSharingService : DataSharingService) 
+            {this.dataSharingService.isUserLogin.subscribe( value => {this.isUserLogin = value;});}
 
   ngOnInit(): void {
     this.listePanierdetails();
+    this.handleAuthentification();
   }
-  listePanierdetails() {
 
+  listePanierdetails() {
     // obtenir un accès aux produits du panier
     this.panierItems = this.panierService.panierItems;
     
@@ -48,6 +55,17 @@ export class PanierDetailsComponent implements OnInit {
 
   remove(panierItem: PanierItem){
     this.panierService.remove(panierItem);
+  }
+
+
+ 
+  handleAuthentification() {
+    const userItem = this.storage.getItem('utilisateur');
+    if(userItem){
+      const user = JSON.parse(userItem);
+      this.isAuthenticated = true;
+      this.dataSharingService.isUserLogin.next(true);
+    }
   }
 
 }

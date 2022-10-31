@@ -48,11 +48,11 @@
 													</tr>
 												</thead>
 												<tbody>
-													<tr *ngFor="let tempInfoUtilisateur of listeUtilisateur">
-														<td>{{tempInfoUtilisateur.nom}}</td>
-														<td>{{tempInfoUtilisateur.prenom}}</td>
-														<td>{{tempInfoUtilisateur.email}}</td>
-														<td>{{tempInfoUtilisateur.telephone}}</td>
+													<tr>
+														<td>{{utilisateur!.nom}}</td>
+														<td>{{utilisateur!.prenom}}</td>
+														<td>{{utilisateur!.email}}</td>
+														<td>{{utilisateur!.telephone}}</td>
 														
 													</tr>
 												</tbody>
@@ -84,9 +84,9 @@
 										<tbody>
 											<tr *ngFor="let tempHistoriqueCommande of listeHistoriqueCommande">
 												<td>{{ tempHistoriqueCommande.numeroSuiviCommande}}</td>
-												<td>{{ tempHistoriqueCommande.prixTotal | currency : 'EUR'}}</td>
-												<td>{{ tempHistoriqueCommande.quantiteTotal}}</td>
-												<td>{{ tempHistoriqueCommande.dateCommande | date : 'medium'}}</td>
+												<td>{{ tempHistoriqueCommande.totalPrix | currency : 'EUR'}}</td>
+												<td>{{ tempHistoriqueCommande.totalQuantite}}</td>
+												<td>{{ tempHistoriqueCommande.date | date : 'medium'}}</td>
 											</tr>
 										</tbody>
 									</table>

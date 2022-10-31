@@ -15,13 +15,31 @@
                     <h3>Adresse de livraison</h3>
 
                     <div class="row">
+                        <div class="col-md-2"> <label>Nom adresse</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="nomAdresse" type="text">
+                                <div *ngIf="nomAdresse!.invalid && (nomAdresse!.dirty || nomAdresse!.touched)" class="alert alert-danger mt-1">
+                                    <div *ngIf="nomAdresse!.errors?.['required'] || nomAdresse!.errors?.['notOnlyWhitespace']">
+                                    Le nom de l'adresse est obligatoire.
+                                    </div>
+
+                                    <div *ngIf="nomAdresse!.errors?.['minlength']">
+                                    Le champs adresse doit avoir un minimum de 5 caractères.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-md-2"> <label>Adresse</label></div>
                         <div class="col-md-9">
                             <div class="input-space">
                                 <input formControlName="adresse" type="text">
                                 <div *ngIf="adresse!.invalid && (adresse!.dirty || adresse!.touched)" class="alert alert-danger mt-1">
                                     <div *ngIf="adresse!.errors?.['required'] || adresse!.errors?.['notOnlyWhitespace']">
-                                    Le nom de l'adresse et le numéro sont obligatoires.
+                                    L'adresse est obligatoire.
                                     </div>
 
                                     <div *ngIf="adresse!.errors?.['minlength']">

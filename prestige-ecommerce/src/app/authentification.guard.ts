@@ -16,7 +16,8 @@ export class AuthentificationGuard implements CanActivate {
       if (!this.AuthentificationService.getUtilisateur) {
         this.router.navigate(['accueil']);
         return false;
+      } else {
+        return true;
       }
-      return true;
     }
   }
