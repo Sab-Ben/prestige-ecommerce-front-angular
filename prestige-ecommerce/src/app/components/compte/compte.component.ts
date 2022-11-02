@@ -3,14 +3,12 @@ import { HistoriqueCommande } from 'src/app/common/historique-commande';
 import { InfoAdresses } from 'src/app/common/info-adresses';
 import { InfoUtilisateur } from 'src/app/common/info-utilisateur';
 
-
 @Component({
   selector: 'app-compte',
   templateUrl: './compte.component.html',
   styleUrls: ['./compte.component.css']
 })
 export class CompteComponent implements OnInit {
-
   listeHistoriqueCommande: HistoriqueCommande[] = [];
   listeAdresses : InfoAdresses [] = [];
   utilisateur : InfoUtilisateur | undefined;
@@ -22,7 +20,6 @@ export class CompteComponent implements OnInit {
     this.handleHistoriqueCommande();
     this.handleInformationUtilisateur();
     this.handleAdressesInformation();
-    
   }
   
   handleHistoriqueCommande() {

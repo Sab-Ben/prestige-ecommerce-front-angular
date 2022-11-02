@@ -45,7 +45,7 @@ get motDePasse() { return this.authentificationFormGroup.get('client.motDePasse'
         this.storage.setItem('utilisateur',JSON.stringify(response['utilisateur']));
         this.storage.setItem('adresses',JSON.stringify(response['adresses']));
         this.storage.setItem('commandes',JSON.stringify(response['commandes']));
-        this.router.navigate(['/compte']); 
+        this.router.navigateByUrl('/compte', {state : response['utilisateur']}); 
       },
     
     error:erreur => {

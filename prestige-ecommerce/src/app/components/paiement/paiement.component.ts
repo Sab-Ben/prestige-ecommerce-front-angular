@@ -26,6 +26,7 @@ totalQuantite: number = 0;
 
 carteCreditAnnee: number[]=[];
 carteCreditMois: number[]=[];
+storage: Storage = sessionStorage;
 
   constructor(private formBuilder: FormBuilder,
               private prestigeFormService: PrestigeFormService,
@@ -67,8 +68,13 @@ carteCreditMois: number[]=[];
         this.carteCreditAnnee= data;
       }
     )
-
-    this.utilisateur=history.state;
+    
+    const userItem = this.storage.getItem('utilisateur');
+    if(userItem){
+      this.utilisateur = JSON.parse(userItem);
+    } else {
+      this.utilisateur=history.state;
+    }
   }
 
   gardeDetailsPanier() {

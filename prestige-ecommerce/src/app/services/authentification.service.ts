@@ -3,8 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Authentification } from '../common/authentification';
-import { Utilisateur } from '../common/utilisateur';
-
 
 @Injectable({
   providedIn: 'root'
