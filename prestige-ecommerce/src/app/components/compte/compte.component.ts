@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HistoriqueCommande } from 'src/app/common/historique-commande';
 import { InfoAdresses } from 'src/app/common/info-adresses';
 import { InfoUtilisateur } from 'src/app/common/info-utilisateur';
-import { HistoriqueCommandeService } from 'src/app/services/historiqueCommande.service';
-import { InfoAdressesService } from 'src/app/services/info-adresses.service';
-import { InfoUtilisateurService } from 'src/app/services/info-utilisateur.service';
 
 
 @Component({
@@ -19,9 +16,7 @@ export class CompteComponent implements OnInit {
   utilisateur : InfoUtilisateur | undefined;
   storage: Storage = sessionStorage; 
 
-  constructor(private historiqueCommandeService : HistoriqueCommandeService,
-              private infoUtilisateurService : InfoUtilisateurService,
-              private infoAdresseService : InfoAdressesService) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.handleHistoriqueCommande();
